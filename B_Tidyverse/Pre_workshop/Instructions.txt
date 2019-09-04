@@ -1,1 +1,35 @@
 Description of what is needed to do pre-workshop
+
+This is in progress but includes the things we need to be sure are done before
+the workshop:
+Install R
+Install R Studio
+Run the file install_packages.R
+
+
+If you want R and R studio installed on your own laptop please do this before
+coming to the meeting. If you have issues contact wlperry@ilstu.edu or see me 
+the night before the workshop. Otherwise we will work on an inline version of
+R Studio.
+
+R can be obtianed for your system from the following site:
+https://cran.r-project.org/
+
+R is the base program sort of like a cell phone we will add apps to
+
+
+R Studio can be obtained from:
+https://www.rstudio.com/products/rstudio/download/#download
+
+R Studio is an addon face to R that alloes you to see scripts, figures,
+and data you have in memory. It is sort of like the screen on your cell phone
+with all the icons.
+
+These two programs alone can do almost all you need to but we add fuctionality
+to each program by installing packages one time that installs one or 
+many libraries. Once istalled, you load the libraries each time you start R and
+run a script.
+
+Please run the install_package.R file in this directory to get the libraries 
+installed before coming to the workshop. Again sometimes there are issues
+and you are welcome to ask any questions you want to wlperry@ilstu.edu
