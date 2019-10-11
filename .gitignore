@@ -2,3 +2,7 @@
 .Rhistory
 .RData
 .Ruserdata
+
+
+A_EcoForecast/Code/gather_data.R
+A_EcoForecast/Data/EnKF_LongData*
