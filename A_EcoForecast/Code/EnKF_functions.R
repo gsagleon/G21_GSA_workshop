@@ -319,7 +319,7 @@ EnKF = function(n_en = 100,
                         cur_step = t) # updating params / states if obs available
     }
   }
-  out = list(Y = Y, dates = dates, drivers_df = drivers_df, R = R, obs = obs, state_sd = state_sd)
+  out = list(Y = Y, dates = dates, drivers = drivers, R = R, obs = obs, state_sd = state_sd)
   
   return(out)
 }
