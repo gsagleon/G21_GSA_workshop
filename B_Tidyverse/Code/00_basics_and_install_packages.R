@@ -1,9 +1,4 @@
 # This script file will help install packages we will use in class-----
-# Move the cursor to line 9 and hit run in the toolbar just above to the left
-# Mac hit command + enter/return
-# PC hit ctrl + enter/return
-# this will run the command and move to the next line. 
-# You will need to run from line 9 to 23
 
 # Install packages -----
 install.packages("devtools") # installs new things not on CRAN
@@ -37,5 +32,24 @@ library("scales") # scales on ggplot ases
 library("skimr") # quick summary stats
 library("janitor") # clean up excel imports
 library("patchwork") # multipanel graphs
+=
+# the <- is the assingment operator -----
+#' This puts anything on the right and stores it in an object in the environment
+
+x <- 7
+
+x
+
+# this will overwrite.
+x <- "Hello there"
 
 
+#' The other operator that we will use is the pipe or %>%
+#' This passes information from the left to the right.
+#' You could think of this in your daily morning routine
+#' 
+#' Person %>% wakes up %>% shower %>% caffeine %>% functional being
+#' 
+#' This all could then be stored in the functional human object
+#' 
+#' functional being <- Person %>% wakes up %>% shower %>% caffeine %>% functional being
