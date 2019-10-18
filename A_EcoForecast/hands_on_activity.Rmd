@@ -46,7 +46,9 @@ predict_lake_doc = function(doc_load, doc_lake, water_out, lake_vol, decay){
 }
 ```
 
-As the name suggests, the _Ensemble_ Kalman Filter utilizes a collection of model runs (ensembles) to make forecasts of the system state (in our example, lake DOC) and uses these ensembles to represent the error statistics as a sample covariance matrix. When a new observation is made, the EnKF updates the model states (DOC) and parameters (decay rate of DOC) based on the relative confidence in the observations and the model estimates. The number of ensembles needed for an analysis should be large enough to allow for reasonable estimates of the mean and covariance, and typically around 100 ensembles are usually used. For our simple model, we don't have to worry about computational costs so we could run more than 100 ensembles but let's just stick to 100 for now. 
+As the name suggests, the _Ensemble_ Kalman Filter utilizes a collection of model runs (ensembles) to make forecasts of the system state (in our example, lake DOC) and uses these ensembles to represent the error statistics as a sample covariance matrix. When a new observation is made, the EnKF updates the model states (DOC) and parameters (decay rate of DOC) based on the relative confidence in the observations and the model estimates. See the EnKF code in the file `A_EcoForecast/Code/EnKF_functions.R`. 
+
+The number of ensembles needed for an analysis should be large enough to allow for reasonable estimates of the mean and covariance, and typically around 100 ensembles are usually used. For our simple model, we don't have to worry about computational costs so we could run more than 100 ensembles but let's just stick to 100 for now. 
 
 ```{r} 
 n_en = 100 # number of ensembles 
@@ -73,13 +75,13 @@ The parameter that we are estimating in our model, the DOC decay rate, needs to 
 decay = 0.005 # decay rate day^-1 
 ```
 
-Finally, we need a start and end date for our model run. The entire timeseries of the dataset is from 2014-06-04 to 2014-09-20 so let's utilize the full timeseries for our first run. 
+Finally, we need a start and end date for our model run. The entire timeseries of the dataset is from 2014-06-04 to 2014-09-20 so let's utilize the full timeseries for this run. 
 ```{r} 
 start = '2014-06-04'
 stop = '2014-09-20' 
 ``` 
 
-Now let's run our model while assimilating observations with the EnKF. 
+Now, let's run our model while assimilating observations with the EnKF! 
 ```{r} 
 est_out = EnKF(n_en = n_en, 
            start = start,
@@ -93,7 +95,7 @@ est_out = EnKF(n_en = n_en,
            init_cond_cv = init_cond_cv)
 ```
 
-And define some functions that allow us to plot the estimated and observed DOC concentration through time as well as the decay rate estimate through time. Each ensemble member prediction is given by the grey lines and the mean of the ensemble predictions is the black line. The observed DOC are the red points with error bars indicating 1 standard deviation from the mean. 
+Let's define some functions that allow us to plot the estimated and observed DOC concentration through time as well as the decay rate estimate through time. Each ensemble member prediction is given by the grey lines and the mean of the ensemble predictions is the black line. The observed DOC are the red points with error bars indicating one standard deviation from the mean. 
 ```{r}
 # plotting 
 plot_doc = function(est_out){
@@ -118,7 +120,7 @@ plot_doc = function(est_out){
 }
 plot_doc(est_out) 
 ```
-Notice that a lot of model prediction uncertainty is reduced after assimilating a single observation (i.e. grey lines get closer to each other). Our simple model does a pretty good job of estimating DOC as the mean of our observations are within 1 standard deviation for most of the observations. The model uncertainty also does not get very large when observations aren't assimilated (i.e. forecast step) which likely reflects the simple structural form of our model, relatively slow processes affecting DOC concentration in this lake, and our measured driver data (as opposed to forecasted driver data which would increase uncertainty in each forecast step). 
+Notice that a lot of model prediction uncertainty is reduced after assimilating a single observation (i.e. grey lines get closer to each other). Our simple model does a pretty good job of estimating DOC as the mean of our observations are within one standard deviation for most of the observations. The model uncertainty also does not get very large when observations aren't assimilated (i.e. forecast step) which likely reflects the simple structural form of our model, relatively slow processes affecting DOC concentration in this lake, and our measured driver data (as opposed to forecasted driver data which would increase uncertainty in each forecast step). 
 
 ```{r}
 plot_decay = function(est_out){
@@ -146,7 +148,7 @@ est_out_zero_init_cv = EnKF(n_en = n_en,
                             obs_cv = obs_cv,
                             param_cv = param_cv,
                             driver_cv = driver_cv, 
-                            init_cond_cv = 0)
+                            init_cond_cv = 0) # assuming we know starting conditions perfectly
 
 plot_doc(est_out_zero_init_cv)
 ```
@@ -172,7 +174,7 @@ Unrealistically low observation uncertainty coupled with no uncertainty in initi
 
 * How does uncertainty change if you increase or decrease the parameter uncertainty? 
 
-* How do the forecasts change if you increase or decrease the initial decay rate? 
+* How do the forecasts change if you increase or decrease the initial decay rate from 0.005 day^-1^? 
 
 * How does the number of ensembles change your forecasts and analysis? 
 
