@@ -35,11 +35,11 @@ glimpse(south.df)
 # We can save the file we just read in using 
 # Saving dataframes -----
 # lets say you have made a lot of changes and its now time to save the dataframe
-write_csv(south.df, "finalized data/output_file.csv")
+write_csv(south.df, "finalized_data/output_file.csv")
 
 
 # Note you can read in excel files just as easy
-south.df <- read_excel("data/south_lake.xlsx", sheet = "south_lake")
+south_excel.df <- read_excel("data/south_lake.xlsx", sheet = "south_lake")
 
 
 # Graphing data-----
@@ -242,8 +242,9 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 # manual point click method is to use export --> pdf or image
 # the code method to save the last plot made is ---
 ggsave(last_plot(), 
-       file="figures/plot1.pdf",
+       file="plot1.jpeg",
        width = 10, height = 8, 
+       device="jpeg",
        units="in",
        dpi=300)
 

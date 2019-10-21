@@ -17,6 +17,8 @@ devtools::install_github("thomasp85/patchwork") # multiple plots
 install.packages("styler") # style your code - nice
 devtools::install_github("calligross/ggthemeassist") # ggplot GUI
 
+
+
 # Load Libraries -----
 # these are the commands to load libraries that we will use in class
 # there may colored text saying commads are masked but you can test these if you like
