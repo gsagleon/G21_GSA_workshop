@@ -1,1 +1,26 @@
-Description of what is needed to do pre-workshop
+This workshop is intended for all skill levels. No lake modeling experience required. Knowledge of R is helpful. While not required, it will be advantageous to bring a laptop with the following installed:
+
+1) R
+2) RStudio
+3) the R-Packages:
+	a) GLM3r
+	b) glmtools
+
+You can install these packages with the following R commands:
+```
+install.packages('devtools')
+library(devtools)
+devtools::install_github("GLEON/GLM3r")
+devtools::install_github('hdugan/glmtools')
+```
+
+GLM3r will allow you to run GLM v.3.0.5 and glmtools is an experimental version of the USGS-R/glmtools with new features (upgraded visualization and added calibration features).
+
+For the workshop, create a working directory with the example R-Script (Code/GLEON21_GLM.R) and all data (Data). This directory should look like this:
+
+```
+/bcs
+GLEON21_GLM.R
+glm3.nml
+glm4.nml
+```
