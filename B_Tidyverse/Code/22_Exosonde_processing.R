@@ -8,7 +8,7 @@ library(patchwork)
 library(janitor)
 
 # Import file ------
-ltk.df <- read_csv("data/LT_EXOSD_2017_01_23.csv", skip = 23) %>%
+ltk.df <- read_csv("data/lt_exo_2017_01_23.csv", skip = 23) %>%
   clean_names() %>%
   remove_empty(which=c("rows", "cols"))
 

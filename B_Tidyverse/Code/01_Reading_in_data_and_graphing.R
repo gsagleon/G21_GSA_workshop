@@ -21,7 +21,7 @@ library("patchwork") # multipanel graphs
 #                         col_types = cols(date = col_date(format = "%m/%d/%Y")))
 
 # Read in file using tidyverse code-----
-south.df <- read_csv("data/South_Lake.csv")
+south.df <- read_csv("data/south_lake.csv")
 
 # Review data structure -----
 # Use blue triangle

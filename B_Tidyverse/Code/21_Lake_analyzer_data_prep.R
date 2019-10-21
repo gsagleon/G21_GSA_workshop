@@ -8,7 +8,7 @@ library(patchwork)
 library(plotly)
 
 # read in file-----
-underwater_hourly.df <- read_csv("data/underwater hourly lt buoy data.csv")
+underwater_hourly.df <- read_csv("data/lt_buoy_underwater_hourly.csv")
 
 # lets look at the data to see what it looks like
 temp.plot <- underwater_hourly.df %>% 

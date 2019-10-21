@@ -63,7 +63,7 @@ lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
 lakes.df <- lakes.df %>% select(-genus_species)
 
 # make wide with column headers of group and summarize by lake and date
-group_wide.df <- lakes_long.df %>%
+group_wide.df <- lakes.df %>%
   pivot_wider(names_from = group, 
               values_from = org_l,
               values_fn = list(org_l = mean, na.rm=TRUE))

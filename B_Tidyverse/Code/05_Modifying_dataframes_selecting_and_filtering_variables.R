@@ -14,7 +14,7 @@ library("patchwork") # multipanel graphs
 # What if we wanted to modify the data in terms of columns or rows
 
 # lets read in a new file to add some complexity for fun
-lakes.df <- read_csv("finalized data/Reduced_Lake_Long_Genus_Species.csv")
+lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
 
 
 # first lets look at how to modify a variable

@@ -8,6 +8,7 @@ install.packages("scales") # scales on ggplot ases
 install.packages("readxl") # read in excel files
 install.packages("skimr") # quick summary stats
 install.packages("janitor") # clean up excel imports
+install.packages("plotly") # great for plots
 
 # special install of packages using devtools -----
 devtools::install_github("thomasp85/patchwork") # multiple plots
@@ -25,6 +26,7 @@ devtools::install_github("calligross/ggthemeassist") # ggplot GUI
 
 # run these only one time----
 library("ggthemeassist")
+library("styler")
 
 # run these each time you run a script -----
 library("readxl") # read in excel files
@@ -34,7 +36,8 @@ library("scales") # scales on ggplot ases
 library("skimr") # quick summary stats
 library("janitor") # clean up excel imports
 library("patchwork") # multipanel graphs
-=
+library(plotly) # great for interactive plots
+
 # the <- is the assingment operator -----
 #' This puts anything on the right and stores it in an object in the environment
 

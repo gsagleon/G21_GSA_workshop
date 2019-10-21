@@ -12,7 +12,7 @@ library("patchwork") # multipanel graphs
 library("plotly")
 
 # read in file ----
-lakes.df <- read_csv("data/Reduced_Lake_Long_Genus_Species.csv")
+lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
 
 # Lets say we want to look at the data and figure out where outliers are
 
