@@ -1,4 +1,11 @@
-# Leach et al Zoplakton reduced for GLEON Workshop
+# A lot of the data was modified from 
+# Leach, TH,  LA Winslow,  FW Acker,  JA Bloomfield,  CW Boylen,  PA Bukaveckas,  
+# DF Charles,  RA Daniels,  CT Driscoll,  LW Eichler,  JL Farrell,  CS Funk,  
+# CA Goodrich,  TM Michelena,  SA Nierzwicki-Bauer,  KM Roy,  WH  Shaw, 
+# JW  Sutherland, MW  Swinton, DA  Winkler, KC  Rose.
+# Long-term dataset on aquatic responses to concurrent climate change 
+# and recovery from acidification. 2018.  Scientific Data. online.  
+# https://doi.org/10.1038/sdata.2018.59.  10.1038/sdata.2018.59
 
 # Load Libraries ----
 # this is done each time you run a script
@@ -35,6 +42,7 @@ glimpse(south.df)
 # We can save the file we just read in using 
 # Saving dataframes -----
 # lets say you have made a lot of changes and its now time to save the dataframe
+
 write_csv(south.df, "finalized_data/output_file.csv")
 
 
@@ -48,8 +56,11 @@ south_excel.df <- read_excel("data/south_lake.xlsx", sheet = "south_lake")
 
 # GGplot layering ----
 # GGplot uses layers to build a graph
+ggplot(data=south.df, aes(x=date, y=cladoceran))  # this sets up data - note there are no symbols      
+
+# Ggplot requires you to add how you want the data presented
 ggplot(data=south.df, aes(x=date, y=cladoceran)) + # this sets up data 
-  geom_line() # this adds a geometry to present the data from above
+  geom_line() # this adds a geometry to present the data from the setup
 
 # Add geom_point() -----
 # Add points to the graph below using geom_point()
@@ -64,21 +75,29 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() 
 
+# What colors are available? ----
+# google --> ggplot colors
 
-# Adding axes labels ----
+
+# Adding simple axes labels ----
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
   labs(x = "Date", y = "Animals (Number per Liter)")
 
+# in the simple labels you can add \n to make a line break... try it above
+
 
 # Label expressions -----
 # Adding special formatting to labels
+# this can get very sophisticated
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
   labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")")))
 
+# the symbol ^ adds a space
+# the symbol * adds no space
 
 # Dates on the X-Axis -----
 # So now you might want to change the axes scales
@@ -90,6 +109,23 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   scale_x_date(date_breaks = "6 month",
                    # limits = as_datetime(c('2017-06-01 00:00:00','2017-08-01 00:00:00')),
                    labels=date_format("%Y-%m-%d"), expand=c(0,0))
+
+# what are the dteas and time represented as
+# CODE	MEANING
+# # # %S	second (00-59)
+# # # %M	minute (00-59)
+# # # %l	hour, in 12-hour clock (1-12)
+# # # %I	hour, in 12-hour clock (01-12)
+# # # %H	hour, in 24-hour clock (01-24)
+# # # %a	day of the week, abbreviated (Mon-Sun)
+# # # %A	day of the week, full (Monday-Sunday)
+# # # %e	day of the month (1-31)
+# # # %d	day of the month (01-31)
+# # # %m	month, numeric (01-12)
+# # # %b	month, abbreviated (Jan-Dec)
+# # # %B	month, full (January-December)
+# # # %y	year, without century (00-99)
+# # # %Y	year, with century (0000-9999)
 
 
 # Themes for graphs -----
@@ -104,14 +140,7 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) +
   theme_light()
 
-# NOW - try a few different themes
-ggplot(south.df, aes(x=date, y=cladoceran)) +
-  geom_line() +
-  geom_point() +
-  labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")"))) +
-  scale_x_date(date_breaks = "6 month",
-               # limits = as_datetime(c('2017-06-01 00:00:00','2017-08-01 00:00:00')),
-               labels=date_format("%Y-%m-%d"), expand=c(0,0))
+# NOW - try a few different themes  by modifying the above statement
 
 # Adjusting graph themes ----
 # so now there is a formatted axis but we need to change the rotation of the font
@@ -132,7 +161,9 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 #' Select ggplot Theme Assistant
 #' 
 #' This will open a dialog box and then the code will appear below
-
+#' This is where we use the addin ggThemeAssistant
+#' 
+#' highlight the code below and click addins and ggThemeAssistant
 
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
@@ -142,9 +173,9 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0))
 
-# Commonly used theme settings ------
-# This is the set of theme settings I use
 
+# Commonly used theme settings ------
+# This is the set of theme settings used in my code
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
@@ -184,7 +215,6 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
     axis.line.y = element_line(color="black", size = 0.3),
     # ADD PLOT BOX
     panel.border = element_rect(colour = "black", fill=NA, size=0.3))
-
 
 
 # Creating your own theme -----
@@ -228,7 +258,8 @@ theme_gleon <- function(base_size = 14, base_family = "Times")
     panel.border = element_rect(colour = "black", fill=NA, size=0.3))
   }
 
-# using the new theme
+# Using custom theme -----
+# note it cuts down on the code repition
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +

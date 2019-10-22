@@ -1,4 +1,4 @@
-# This script file will help install packages we will use in class-----
+# This script file will help install packages we will use in class -----
 
 # Install packages -----
 install.packages("devtools") # installs new things not on CRAN
@@ -16,7 +16,7 @@ devtools::install_github("thomasp85/patchwork") # multiple plots
 
 # Other packages I really like ------
 install.packages("styler") # style your code - nice
-devtools::install_github("calligross/ggthemeassist") # ggplot GUI
+devtools::install_github("calligross/ggThemeAssist") # ggplot GUI
 
 
 
@@ -25,7 +25,7 @@ devtools::install_github("calligross/ggthemeassist") # ggplot GUI
 # there may colored text saying commads are masked but you can test these if you like
 
 # run these only one time----
-library("ggthemeassist")
+library("ggThemeAssist")
 library("styler")
 
 # run these each time you run a script -----
@@ -45,8 +45,10 @@ x <- 7
 
 x
 
-# this will overwrite.
+# this will overwrite the previous assingment
 x <- "Hello there"
+
+x 
 
 
 #' The other operator that we will use is the pipe or %>%

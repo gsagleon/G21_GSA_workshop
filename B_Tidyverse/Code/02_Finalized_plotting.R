@@ -43,7 +43,7 @@ ggplot(south_long.df, aes(date, org_l, color=group)) +
 # , shape = group
 # , linetype = group
 # , size = group
-
+# try changing the line style or symbol shape
 ggplot(south_long.df, aes(date, org_l, color=group)) + 
   geom_point()+
   geom_line()
@@ -61,7 +61,7 @@ ggplot(south_long.df, aes(group, org_l, color=group)) +
   geom_point(position= position_jitterdodge(jitter.width = 0.3))
 
 
-# look for other plot types like violin or others adn see what you get
+# look for other plot types like violin or others and see what you get
 
 
 # Final publication quality graph-----
@@ -77,6 +77,11 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
   scale_color_manual(name = "Group", 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod"))
+
+# you can also add custom fill, shape, linetype and so on by adding in 
+# scale_fill_manual
+# scale_shape_manual
+# scale_linetype_manual
 
 # Note here the labels on the X Axis are too frequent - try changing this below....
 # try 6 months, 12 months, 1 years, 52 weeks 
@@ -143,7 +148,7 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
   scale_color_manual(name = "Group", 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod")) +
-  facet_grid(group~.) # rows by columns
+  facet_grid(group ~ .) # rows by columns
 
 
 # Relabelling facet titles -----

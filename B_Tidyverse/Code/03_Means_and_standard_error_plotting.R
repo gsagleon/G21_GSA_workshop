@@ -13,7 +13,6 @@ library("skimr") # quick summary stats
 library("janitor") # clean up excel imports
 library("patchwork") # multipanel graphs
 
-# 
 
 # lets read in a new file to add some complexity for fun
 lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
@@ -62,7 +61,7 @@ ggplot(lakes.df, aes(year, color=group)) +
                      labels = c("Cladoceran", "Copepod"))
 
 # Mean and Standard error by lake
-#Note we could look at this in each lake
+# Note we could look at this in each lake
 ggplot(lakes.df, aes(year, color=group)) + 
   stat_summary(aes(y = org_l),
                fun.y = mean, na.rm = TRUE,
@@ -83,8 +82,16 @@ ggplot(lakes.df, aes(year, color=group)) +
   scale_color_manual(name = "Group", 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod")) 
-# WHAT DO YOU NEED TO ADD
-# WHAT DO YOU NEED TO ADD TO MAKE SCALES Y Free?
+# the above takes the mean and standard error of all lakes
+# what if you wanted to see this for each lake separately?
+  # WHAT DO YOU NEED TO ADD
+# note that when you do this the y scales are all the same
+# what can you do to fix this
+  # add 
+  # , scales = "free_x" 
+  # , scales = "free_y" 
+  # , scales = "free" 
+
 
 
 
