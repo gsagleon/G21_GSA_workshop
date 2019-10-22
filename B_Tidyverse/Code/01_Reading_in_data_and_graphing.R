@@ -49,10 +49,8 @@ write_csv(south.df, "finalized_data/output_file.csv")
 # Note you can read in excel files just as easy
 south_excel.df <- read_excel("data/south_lake.xlsx", sheet = "south_lake")
 
-
 # Graphing data-----
 # The key to all data cleaning and analyses is graphing
-
 
 # GGplot layering ----
 # GGplot uses layers to build a graph
@@ -127,7 +125,6 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 # # # %y	year, without century (00-99)
 # # # %Y	year, with century (0000-9999)
 
-
 # Themes for graphs -----
 # Here we need to start setting the theme for the graph or appearance
 # There are built in theme 
@@ -141,6 +138,16 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   theme_light()
 
 # NOW - try a few different themes  by modifying the above statement
+# themes that are available:
+      #' theme_minimal()
+      #' theme_gray()
+      #' theme_bw()
+      #' theme_linedraw()
+      #' theme_light()
+      #' theme_dark()
+      #' theme_minimal()
+      #' theme_void()
+
 
 # Adjusting graph themes ----
 # so now there is a formatted axis but we need to change the rotation of the font
@@ -151,9 +158,9 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   scale_x_date(date_breaks = "6 month",
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) + 
-  theme(
+  theme (
     axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)
-    )
+     )
 
 # GGTHEME ASSISTANT -----
 #' So you could as Dr. Google every theme aspect and spend hours making grpahs
@@ -259,7 +266,7 @@ theme_gleon <- function(base_size = 14, base_family = "Times")
   }
 
 # Using custom theme -----
-# note it cuts down on the code repition
+# note it cuts down on the code repitition
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +

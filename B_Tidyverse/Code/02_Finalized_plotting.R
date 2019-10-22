@@ -1,4 +1,4 @@
-# 03 Special Plotting 
+# 02 Special Plotting 
 # So that was the most simple version of plotting and will get you started
 # This will take you the rest of the way to publication ready plotting
 # And data exploration
@@ -61,7 +61,7 @@ ggplot(south_long.df, aes(group, org_l, color=group)) +
   geom_point(position= position_jitterdodge(jitter.width = 0.3))
 
 
-# look for other plot types like violin or others and see what you get
+# look for other geoms like violin or others and see what you get
 
 
 # Final publication quality graph-----
@@ -70,7 +70,7 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
   geom_point()+
   geom_line() +
   labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")"))) +
-  scale_x_date(date_breaks = "3 month",
+  scale_x_date(date_breaks = "6 month",
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0))  +
   theme(axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)) +
@@ -82,6 +82,8 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
 # scale_fill_manual
 # scale_shape_manual
 # scale_linetype_manual
+
+# you can also add size = X to both lines and symbols to change sizes
 
 # Note here the labels on the X Axis are too frequent - try changing this below....
 # try 6 months, 12 months, 1 years, 52 weeks 

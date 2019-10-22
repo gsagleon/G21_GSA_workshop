@@ -60,3 +60,5 @@ x
 #' This all could then be stored in the functional human object
 #' 
 #' functional being <- Person %>% wakes up %>% shower %>% caffeine %>% functional being
+#' 
+#' 

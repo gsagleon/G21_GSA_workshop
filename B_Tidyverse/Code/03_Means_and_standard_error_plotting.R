@@ -82,6 +82,8 @@ ggplot(lakes.df, aes(year, color=group)) +
   scale_color_manual(name = "Group", 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod")) 
+
+
 # the above takes the mean and standard error of all lakes
 # what if you wanted to see this for each lake separately?
   # WHAT DO YOU NEED TO ADD

@@ -1,6 +1,5 @@
 # Modifying data frame structure
 
-
 # Load Libraries ----
 # this is done each time you run a script
 library("readxl") # read in excel files
@@ -49,9 +48,6 @@ lakes_wide.df <- lakes_long.df %>%
     id_cols = c( "lake_name", "date" ),
     names_from = genus_species,
     values_from = org_l)
-
-
-
 
 
 # now the new version of modification can also do cool stuff like 

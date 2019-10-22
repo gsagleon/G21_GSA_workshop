@@ -1,4 +1,12 @@
-# Leach et al reduced for GLEON Workshop
+# A lot of the data was modified from 
+# Leach, TH,  LA Winslow,  FW Acker,  JA Bloomfield,  CW Boylen,  PA Bukaveckas,  
+# DF Charles,  RA Daniels,  CT Driscoll,  LW Eichler,  JL Farrell,  CS Funk,  
+# CA Goodrich,  TM Michelena,  SA Nierzwicki-Bauer,  KM Roy,  WH  Shaw, 
+# JW  Sutherland, MW  Swinton, DA  Winkler, KC  Rose.
+# Long-term dataset on aquatic responses to concurrent climate change 
+# and recovery from acidification. 2018.  Scientific Data. online.  
+# https://doi.org/10.1038/sdata.2018.59.  10.1038/sdata.2018.59
+
 
 # Load Libraries ----
 # this is done each time you run a script
