@@ -5,13 +5,46 @@
 
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
+
+# Statistical Plots ----- 
+# Long plot file is the best way to work with data
+south_long.df <- read_csv("data/south_lake_long.csv")
+
+# Now lets look at some statistical plot
+# try adding in geom_boxplot()
+# be careful where you add it
+ggplot(south_long.df, aes(group, org_l, color=group)) + 
+  geom_point() 
+
+# to fix overlying points
+ggplot(south_long.df, aes(group, org_l, color=group)) + 
+  geom_boxplot() +
+  geom_point(position= position_jitterdodge(jitter.width = 0.3))
+
+
+# Histograms------
+# look for other geoms 
+# example of histogram one group at a time
+south_long.df %>%
+  filter(group=="cladoceran") %>%
+  ggplot( aes(org_l, fille=group)) + 
+  geom_histogram(binwidth = 10) 
+
+# Area plots -----
+south_long.df %>%
+  filter(group=="cladoceran") %>%
+  ggplot( aes(org_l, fill=group)) + 
+  geom_area(stat="bin")
+
+# look at the ggplot cheat sheet and there are many many more graphs 
+
 
 
 # lets read in a new file to add some complexity for fun

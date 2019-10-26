@@ -2,13 +2,13 @@
 
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 
 # If you were typing in data this might be how it looks
 # Read in wide dataframe ----

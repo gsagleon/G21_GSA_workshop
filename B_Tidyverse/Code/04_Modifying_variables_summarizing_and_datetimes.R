@@ -10,13 +10,13 @@
 
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 
 # So now we have seen how to look at the data
 # What if we wanted to modify the data in terms of columns or rows
@@ -77,6 +77,6 @@ lakes.df %>% group_by(lake_name, group) %>% skim(org_l)
 skim.df <- lakes.df %>% dplyr::group_by(group) %>% skim(org_l)
 
 
-# there are a lot of things we can do wiht mutate and the possibilities are 
+# there are a lot of things we can do with mutate and the possibilities are 
 # endless. What would you like to see done?
 

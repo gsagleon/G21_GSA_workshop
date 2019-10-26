@@ -9,26 +9,31 @@
 
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 
 # Read in file point and click ----
-# read in the file south_lake.csv
+# read in the file south_lake.csv using the Import Dataset in the Environment tab
 
 # click and point uses either
 # south_lake <- read_csv("finalized data/south_lake.csv")
 
 # or if you want to specify columns 
 # south_lake <- read_csv("finalized data/south_lake.csv", 
-#                         col_types = cols(date = col_date(format = "%m/%d/%Y")))
+#                         col_types = cols(date = col_date(format = "%Y-%m-%d")))
 
 # Read in file using tidyverse code-----
 south.df <- read_csv("data/south_lake.csv")
+
+# there are a few tricks here - 
+# , guess_max = XXX - this will extend the range readr tries to guess the forma of the variable
+# you can also add in a pipe %>% and read in the file and pass that to further prcessing scripts
+
 
 # Review data structure -----
 # Use blue triangle
@@ -53,18 +58,20 @@ south_excel.df <- read_excel("data/south_lake.xlsx", sheet = "south_lake")
 # The key to all data cleaning and analyses is graphing
 
 # GGplot layering ----
-# GGplot uses layers to build a graph
+# GGplot uses layers to build a graph 
+# the data =, x=, and y= is optional in most cases
 ggplot(data=south.df, aes(x=date, y=cladoceran))  # this sets up data - note there are no symbols      
 
-# Ggplot requires you to add how you want the data presented
+# GGplot requires you to add how you want the data presentedo using geoms
+# note that the aes statement can all go in the geom_ lines
 ggplot(data=south.df, aes(x=date, y=cladoceran)) + # this sets up data 
   geom_line() # this adds a geometry to present the data from the setup
 
 # Add geom_point() -----
 # Add points to the graph below using geom_point()
+# you can also try other geoms
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() 
-
 
 # Add color ----
 # What if you wanted red points?
@@ -78,12 +85,11 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 
 # Adding simple axes labels ----
+# in the simple labels you can add \n to make a line break... try it after running this code
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
   labs(x = "Date", y = "Animals (Number per Liter)")
-
-# in the simple labels you can add \n to make a line break... try it above
 
 
 # Label expressions -----
@@ -96,6 +102,13 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 # the symbol ^ adds a space
 # the symbol * adds no space
+
+# Expressions with 2 lines -----
+# here you need to add in the statemetn atop
+ggplot(south.df, aes(x=date, y=cladoceran)) +
+  geom_line() +
+  geom_point() +
+  labs(x = "Date", y = expression(bold(atop("Animals (No. L"^-1*")", paste("more stuff on the second line")))))
 
 # Dates on the X-Axis -----
 # So now you might want to change the axes scales
@@ -151,6 +164,7 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 # Adjusting graph themes ----
 # so now there is a formatted axis but we need to change the rotation of the font
+# note you can add a base theme and then mondify it with the theme statements
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
@@ -160,12 +174,12 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) + 
   theme (
     axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)
-     )
+     ) 
 
 # GGTHEME ASSISTANT -----
-#' So you could as Dr. Google every theme aspect and spend hours making grpahs
+#' So you could ask Dr. Google every theme aspect and spend hours making graphs
 #' Use ggtheme assistant - highlight code of graph and go to Addins
-#' Select ggplot Theme Assistant
+#' Select `ggplot Theme Assistant`
 #' 
 #' This will open a dialog box and then the code will appear below
 #' This is where we use the addin ggThemeAssistant
@@ -225,10 +239,11 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 
 # Creating your own theme -----
+# that is a lot of code to add each time so it is better to make your own theme
 # you can also make your own theme to avoid this every time
 # Theme for Graphs
 # Make a new default theme
-# Run this and it will store it as an object for use later
+# Run this and it will store it as an object in the environemtn tab for use later 
 theme_gleon <- function(base_size = 14, base_family = "Times")
 {
   theme(
@@ -298,5 +313,6 @@ ggsave(plot1.plot,
        width = 10, height = 8, 
        units="in",
        dpi=300)
+
 
 

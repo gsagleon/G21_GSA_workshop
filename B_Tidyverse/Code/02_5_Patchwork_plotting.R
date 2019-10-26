@@ -5,13 +5,13 @@
 
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 
 # So now we have seen how to look at the data
 # What if we wanted to modify the data in terms of columns or rows
@@ -110,10 +110,8 @@ grass.plot +  theme(legend.position = "bottom") + {
   plot_layout(ncol = 2)
 
 # You can also do this without brackets
-(
-grass.plot  + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
+(grass.plot  + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
                      legend.position = "none") |
 willis.plot + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
-                      legend.position = "none")
-) /
+                      legend.position = "none")) /
 indian.plot +   theme(legend.position = "bottom") 
