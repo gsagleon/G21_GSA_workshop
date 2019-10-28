@@ -98,3 +98,4 @@ lakes.df <- lakes.df %>%
                           org_l < 40 & org_l >=30 ~ "medium",
                           org_l < 30 & org_l >=20 ~ "lower",
                           TRUE ~ "in_range"))
+

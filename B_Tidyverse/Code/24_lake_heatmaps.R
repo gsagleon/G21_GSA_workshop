@@ -51,7 +51,7 @@ mendota_2013.df <- mendota_interp.df %>%
 
 # plot our interpolated data
 ggplot(mendota_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
-  geom_raster() +
+  geom_tile() + # used to use geom_raster
   scale_y_reverse(expand=c(0,0)) +
   scale_fill_gradientn(colours=matlab.like(10), na.value = 'gray', name="Water\nTemp \nºC") + 
   scale_x_date(date_breaks = "1 week", 
@@ -67,7 +67,7 @@ ggplot(mendota_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
 mendota_interp.df %>%
   filter(year==2013) %>%
   ggplot(aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
-  geom_raster() +
+  geom_tile() +
   scale_y_reverse(expand=c(0,0)) +
   scale_fill_gradientn(colours=matlab.like(10), na.value = 'gray', name="Water\nTemp \nºC") + 
   scale_x_date(date_breaks = "1 week", 
@@ -78,7 +78,7 @@ mendota_interp.df %>%
 
 # Clean up plots and make it look nice ----
 temp_heatmap.plot <- ggplot(mendota_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
-  geom_raster() +
+  geom_tile() +
   scale_y_reverse(expand=c(0,0)) +
   scale_fill_gradientn(colours=matlab.like(10), na.value = 'gray', name="Water\nTemp \nºC") + 
   scale_x_date(date_breaks = "3 week", 
@@ -129,7 +129,7 @@ temp_heatmap.plot
 mendota_2012_2013.df <- mendota_interp.df %>%
   filter(year %in% 2012:2013)
 ggplot(mendota_2012_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
-  geom_raster() +
+  geom_tile() +
   scale_y_reverse(expand=c(0,0)) +
   scale_fill_gradientn(colours=matlab.like(10), na.value = 'gray', name="Water\nTemp \nºC") + 
   scale_x_date(date_breaks = "3 week",
@@ -142,8 +142,8 @@ ggplot(mendota_2012_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) 
 # the full range of dates on the x axis
 
 
-ggplot(mendota_2012_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
-  geom_raster() +
+ggplot(mendota_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) +
+  geom_tile() +
   scale_y_reverse(expand=c(0,0)) +
   scale_fill_gradientn(colours=matlab.like(10), na.value = 'gray', name="Water\nTemp \nºC") + 
   scale_x_date(date_breaks = "3 week",
@@ -185,34 +185,6 @@ ggplot(mendota_2012_2013.df, aes(x = date, y = depth, z = wtemp, fill = wtemp)) 
     axis.line.y = element_line(color="black", size = 0.3),
     # ADD PLOT BOX
     panel.border = element_rect(colour = "black", fill=NA, size=0.3))
-
-
-
-# TRYING OTHER INTERPOLATION
-# Use readr package to load mendoata data
-mendota.df <- read_csv("data/mendota_temp.csv")
-
-# Clean up bad data and out of range data
-mendota_clean.df <- mendota.df %>% # use this df for rest of commands
-  filter(wtemp>=0) %>% # select data that is greater or equal to 0
-  filter(!is.na(wtemp)) %>% # remove all NA values
-  filter(year4 == 2014) %>%
-  select(sampledate, depth, wtemp) # this uses only the variables that are needed
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 
 
 
