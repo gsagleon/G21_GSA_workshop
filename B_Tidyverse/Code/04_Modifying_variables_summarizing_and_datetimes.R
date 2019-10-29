@@ -46,8 +46,7 @@ lakes_modified.df <- lakes.df %>%
   mutate(mean_org_l = mean(org_l, na.rm=TRUE))
 
 # Mean and Standard Error -----
-# there is no na.rm=TRUE for sum so we have to do some 
-# special things
+# there is no na.rm=TRUE for sum so we have to do some special math
 lakes_modified.df <- lakes.df %>%
   group_by(group) %>%
   mutate(mean_org_l = mean(org_l, na.rm=TRUE),

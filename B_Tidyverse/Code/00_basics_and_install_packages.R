@@ -41,6 +41,8 @@ library(plotly) # great for interactive plots
 x <- 7
 
 x
+ 
+# hello #####
 
 # this will overwrite the previous assingment
 x <- "Hello there"
@@ -56,6 +58,6 @@ x
 #' 
 #' This all could then be stored in the functional human object
 #' 
-#' functional being <- Person %>% wakes up %>% shower %>% caffeine %>% functional being
+#' functional being <- Person %>% wakes up %>% shower %>% caffeine*10
 
 
