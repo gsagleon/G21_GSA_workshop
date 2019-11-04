@@ -1,21 +1,21 @@
 # This script will help install packages we will use in class -----
 
 # Install packages -----
-install.packages("devtools") # installs new things not on CRAN
-install.packages("tidyverse") # dplyr and piping and ggplot etc
-install.packages("lubridate") # dates and times
-install.packages("scales") # scales on ggplot ases
-install.packages("readxl") # read in excel files
-install.packages("skimr") # quick summary stats
-install.packages("janitor") # clean up excel imports
-install.packages("plotly") # great for plots
+# install.packages("devtools") # installs new things not on CRAN
+# install.packages("tidyverse") # dplyr and piping and ggplot etc
+# install.packages("lubridate") # dates and times
+# install.packages("scales") # scales on ggplot ases
+# install.packages("readxl") # read in excel files
+# install.packages("skimr") # quick summary stats
+# install.packages("janitor") # clean up excel imports
+# install.packages("plotly") # great for plots
 
 # special install of packages using devtools -----
-devtools::install_github("thomasp85/patchwork") # multiple plots
+# devtools::install_github("thomasp85/patchwork") # multiple plots
 
 # Other packages I really like ------
-install.packages("styler") # style your code - nice
-devtools::install_github("calligross/ggThemeAssist") # ggplot GUI
+# install.packages("styler") # style your code - nice
+# devtools::install_github("calligross/ggThemeAssist") # ggplot GUI
 
 # Load Libraries -----
 # these are the commands to load libraries that we will use in class

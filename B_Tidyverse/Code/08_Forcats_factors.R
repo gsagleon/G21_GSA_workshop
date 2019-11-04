@@ -85,3 +85,38 @@ lakes.df  %>% ggplot(aes(year, color = lake_name)) +
 
 
 
+
+# time for something new ----
+# what if there were a lot of species 
+# you wanted to only see the top 3
+# lets read in a new file to add some complexity for fun
+lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
+
+lakes.df <- lakes.df %>% 
+  filter(org_l > 0) %>%
+  mutate(genus_species = as.factor(genus_species)) %>%
+  arrange(genus_species)
+
+# lets look at a plot
+lakes.df %>% 
+  ggplot(aes(x=genus_species, y=org_l)) +
+  geom_boxplot() +
+  coord_flip()
+
+# reorder it by number per liter look at a plot
+lakes.df %>% 
+  ggplot(aes(x=fct_reorder(genus_species, org_l), org_l)) +
+  geom_boxplot() +
+  coord_flip()
+
+
+# Lets combine the rare species
+lakes.df <- lakes.df %>%  
+  mutate(lumped_sp = fct_lump(genus_species, n=3)) 
+
+# reorder it by number per liter look at a plot
+lakes.df %>% 
+  ggplot(aes(lumped_sp, org_l)) +
+  geom_boxplot() +
+  coord_flip()
+

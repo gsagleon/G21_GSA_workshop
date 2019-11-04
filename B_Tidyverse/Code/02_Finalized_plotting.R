@@ -26,7 +26,8 @@ south_long.df <- read_csv("data/south_lake_long.csv")
 # notice that it plots all the data and is sort of a mess...
 # there are no groupings of cladocerans or copepods
 
-ggplot(south_long.df, aes(date, org_l)) + # sometimes necessary is , group = group
+ggplot(south_long.df, aes(date, org_l, 
+                          shape=group, linetype=group, color=group)) + # sometimes necessary is , group = group
   geom_point()+
   geom_line()
 
@@ -55,7 +56,7 @@ ggplot(south_long.df, aes(date, org_l, color=group)) +
 
 # Final publication quality graph-----
 # Modifying custom colors ------
-ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is , group = group
+ggplot(south_long.df, aes(date, org_l, shape=group, color=group)) + # sometimes necessary is , group = group
   geom_point()+
   geom_line() +
   labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")"))) +
@@ -63,8 +64,11 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"))  +
   theme(axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)) +
-  scale_color_manual(name = "Group", 
+  scale_color_manual(name = "Taxa", 
                      values = c("blue", "red"),
+                     labels = c("Cladoceran", "Copepod")) +
+  scale_shape_manual(name = "Group", 
+                     values = c(21, 23),
                      labels = c("Cladoceran", "Copepod"))
 
 # If you add in a shape, linetype, or fill above you need to add a corresponding scale command
@@ -190,7 +194,7 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
   scale_color_manual(name = "Group", 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod")) +
-  facet_grid(.~group) # rows by columns
+  facet_grid(group~.) # rows by columns
   
 
 # Facet_grid vertical ----
@@ -225,8 +229,9 @@ ggplot(south_long.df, aes(date, org_l, color=group)) + # sometimes necessary is 
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod")) +
   facet_grid(.~group,
-             labeller = labeller(group = c("cladoceran" = "a) Cladoceran",
-                                             "copepod" = "b) Copepod"))) # rows by columns
+             labeller = 
+               labeller(group = c("cladoceran" = "a) ",
+                           "copepod" = "b) "))) # rows by columns
 
 
 

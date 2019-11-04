@@ -26,6 +26,11 @@ lakes_long.df <- lakes.df %>%
          -lake_name, -date, -permanent_id, -year # "-" means leave alone
   )
 
+lakes_long.df <-  lakes_long.df %>%
+  separate(genus_species, c("group", "genus", "species"), 
+           sep="_")
+
+
 # this is the newer way that might be better
 lakes_long.df <- lakes.df %>%
   pivot_longer(

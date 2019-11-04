@@ -47,7 +47,11 @@ exo.df <- exo.df %>%
 # What do you think we would do for the date column? 
 # Modify the code below
 exo.df <- exo.df %>% 
-  mutate(date = (date))
+  mutate(date = mdy(date))
+
+exo.df <- exo.df %>% 
+  mutate(date = yday(date))
+
 
 # What is datetime really - When did Time begin?
 

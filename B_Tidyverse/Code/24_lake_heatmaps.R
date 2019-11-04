@@ -5,7 +5,6 @@
 # load packages----
 library(tidyverse)
 library(lubridate)
-library(ggplot2)
 library(scales)
 library(colorRamps)
 library(akima)

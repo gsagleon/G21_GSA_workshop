@@ -42,7 +42,7 @@ temp.plot <- underwater_hourly.df %>%
     # LABLES APPEARANCE
     axis.title.x=element_text(size=14, face="bold"),
     axis.title.y=element_text(size=14, face="bold"),
-    axis.text.x = element_text(size=13, face="bold", angle=0, vjust = .5, hjust=.5),
+    axis.text.x = element_text(size=13, face="bold", angle=30, vjust = 1, hjust=1),
     axis.text.y = element_text(size=13, face="bold"),
     # plot.title = element_text(hjust = 0.5, colour="black", size=22, face="bold"),
     # LEGEND
@@ -72,10 +72,7 @@ temp.plot <- underwater_hourly.df %>%
     axis.line.y = element_line(color="black", size = 0.3),
     # ADD PLOT BOX
     panel.border = element_rect(colour = "black", fill=NA, size=0.3))
-
 temp.plot
-
-
 
 
 

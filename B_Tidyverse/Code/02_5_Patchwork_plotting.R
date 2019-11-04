@@ -67,6 +67,10 @@ indian.plot <- lakes.df %>%
 indian.plot
 
 
+
+willis.plot + indian.plot
+
+
 # Now we can use patchwork to combine files
 # Lets look at the plots in one format
 grass.plot +
@@ -95,7 +99,7 @@ grass.plot + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
                    legend.position = "none") + 
 willis.plot + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
                     legend.position = "none") +
-indian.plot + theme(axis.title.x=element_blank(), axis.text.x=element_blank(),
+indian.plot + theme(,
                     legend.position = "bottom") +
 plot_layout(ncol = 1,
             heights=c(4,2,1))

@@ -17,6 +17,8 @@ library(skimr) # quick summary stats
 library(janitor) # clean up excel imports
 library(patchwork) # multipanel graphs
 
+# install.packages("hms")
+
 # Read in file point and click ----
 # read in the file south_lake.csv using the Import Dataset in the Environment tab
 
@@ -29,6 +31,9 @@ library(patchwork) # multipanel graphs
 
 # Read in file using tidyverse code-----
 south.df <- read_csv("data/south_lake.csv")
+
+# south.df <- read_csv("data/south_lake_long.csv")
+
 
 # there are a few tricks here - 
 # , guess_max = XXX - this will extend the range readr tries to guess the forma of the variable
@@ -71,8 +76,9 @@ ggplot(data=south.df, aes(x=date, y=cladoceran)) + # this sets up data
 # Add points to the graph below using geom_point()
 # you can also try other geoms
 ggplot(south.df, aes(x=date, y=cladoceran)) +
-  geom_line() 
-
+  
+  geom_point(size=3, color="khaki1")+
+geom_line(color="darkgreen", linetype="dashed") 
 # Add color ----
 # What if you wanted red points?
 # Add color="red" into the geoms
@@ -89,7 +95,8 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
-  labs(x = "Date", y = "Animals (Number per Liter)")
+  labs(x = "Date", y = "Animals (Number per Liter)") +
+  theme_classic()
 
 
 # Label expressions -----
@@ -98,7 +105,8 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
-  labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")")))
+  labs(x = "Date", 
+       y = expression(bold("Animals (No. L"[-1]*mu*")")))
 
 # the symbol ^ adds a space
 # the symbol * adds no space
@@ -117,7 +125,7 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   geom_line() +
   geom_point() +
   labs(x = "Date", y = expression(bold("Animals (No. L"^-1*")"))) +
-  scale_x_date(date_breaks = "6 month",
+  scale_x_date(date_breaks = "24 weeks",
                    # limits = as_datetime(c('2017-06-01 00:00:00','2017-08-01 00:00:00')),
                    labels=date_format("%Y-%m-%d"), expand=c(0,0))
 
@@ -148,7 +156,7 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   scale_x_date(date_breaks = "6 month",
                # limits = as_datetime(c('2017-06-01 00:00:00','2017-08-01 00:00:00')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) +
-  theme_light()
+  theme_void()
 
 # NOW - try a few different themes  by modifying the above statement
 # themes that are available:
@@ -172,6 +180,13 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   scale_x_date(date_breaks = "6 month",
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) + 
+  theme(axis.line = element_line(linetype = "dotted"), 
+    axis.ticks = element_line(linetype = "longdash"), 
+    panel.grid.major = element_line(linetype = "blank"), 
+    panel.grid.minor = element_line(linetype = "blank"), 
+    axis.text = element_text(family = "Bookman"), 
+    axis.text.y = element_text(family = "serif"), 
+    panel.background = element_rect(fill = "magenta1")) +
   theme (
     axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)
      ) 
@@ -205,11 +220,12 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0))+
   theme(
+    axis.ticks.length=unit(-0.25, "cm"),
     # LABLES APPEARANCE
     axis.title.x=element_text(size=14, face="bold"),
     axis.title.y=element_text(size=14, face="bold"),
-    axis.text.x = element_text(size=14, face="bold", angle=45, hjust=1),
-    axis.text.y = element_text(size=14, face="bold"),
+    axis.text.x = element_text(size=14, face="bold", angle=45, hjust=1.1),
+    axis.text.y = element_text(size=14, face="bold", hjust=-.7),
     # plot.title = element_text(hjust = 0.5, colour="black", size=22, face="bold"),
     # LEGEND
     legend.position="none",

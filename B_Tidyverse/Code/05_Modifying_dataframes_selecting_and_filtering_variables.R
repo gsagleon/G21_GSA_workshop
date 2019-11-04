@@ -71,6 +71,26 @@ lakes.df <- lakes.df %>%
 # there are several boolean operators that are useful for filtering data
 # we can use these to just see the data or we can use to 
 
+lakes.df <- lakes.df %>%
+  mutate(year = year(date),
+         month = month(date))
+
+subset <- lakes.df %>% 
+  filter(year==1997 & month == 7 |
+         year==1998 & month == 7)
+
+subset <- lakes.df %>% 
+  filter(year %in% c(1997, 1998) & month == 7 )
+
+subset <- lakes.df %>% 
+  filter(date > ymd("1999/01/01" ))
+
+
+sonde <- sonde %>%
+  filter(depth >= 0 )
+
+
+
 # lets say we wanted to look at only one lake
 lakes.df %>% filter(org_l >5) %>%  filter(lake_name == "Willis")
 

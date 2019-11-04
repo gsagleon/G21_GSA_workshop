@@ -37,7 +37,7 @@ lakes_modified.df <- lakes.df %>%
 
 # Mean by group ------
 lakes_modified.df <- lakes.df %>%
-  group_by(group) %>%
+  group_by(group, lake_name) %>%
   mutate(mean_org_l = mean(org_l, na.rm=TRUE))
 
 # how would you modify this to do the mean by group and lake?
@@ -68,12 +68,21 @@ lakes_summary.df <- lakes.df %>%
   summarize(mean_org_l = mean(org_l, na.rm=TRUE),
          se_org_l = sd(org_l, na.rm = T) / sqrt(sum(!is.na(org_l))))
 
+write_excel_csv(lakes_summary.df, "finalized_data/summary.csv")
+
+lakes.df %>%
+  group_by(lake_name, group) %>%
+  summarize(mean_org_l = mean(org_l, na.rm=TRUE)) %>%
+  ggplot(aes(lake_name, mean_org_l, color=group)) +
+  geom_point() 
+
+
 # the other way to do this is using skimr to look at summary data
 
-lakes.df %>% group_by(lake_name, group) %>% skim(org_l)
+lakes.df %>% filter(org_l>0) %>% group_by(lake_name, group) %>% skim(org_l)
 
 # this can be saved to a dataframe as well
-skim.df <- lakes.df %>% dplyr::group_by(group) %>% skim(org_l)
+lakes.df %>% dplyr::group_by(group) %>% skim(org_l)
 
 
 # there are a lot of things we can do with mutate and the possibilities are 

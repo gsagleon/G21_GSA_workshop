@@ -20,12 +20,26 @@ south_long.df <- read_csv("data/south_lake_long.csv")
 # Now lets look at some statistical plot
 # try adding in geom_boxplot()
 # be careful where you add it
-ggplot(south_long.df, aes(group, org_l, color=group)) + 
+plot1.plot <- ggplot(south_long.df, aes(date, org_l, color=group)) + 
   geom_point() 
+plot1.plot
+
+install.packages("plotly")
+library(plotly)
+
+ggplotly(plot1.plot)
+
+
+
+
+
 
 # to fix overlying points
 ggplot(south_long.df, aes(group, org_l, color=group)) + 
   geom_boxplot() +
+  geom_jitter(size = 3)
+  
+  
   geom_point(position= position_jitterdodge(jitter.width = 0.3))
 
 
