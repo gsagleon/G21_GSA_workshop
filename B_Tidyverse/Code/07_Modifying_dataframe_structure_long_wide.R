@@ -1,15 +1,14 @@
 # Modifying data frame structure
 
-
 # Load Libraries ----
 # this is done each time you run a script
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 
 # So now we have seen how to look at the data
 # What if we wanted to modify the data in terms of overall structure
@@ -49,9 +48,6 @@ lakes_wide.df <- lakes_long.df %>%
     id_cols = c( "lake_name", "date" ),
     names_from = genus_species,
     values_from = org_l)
-
-
-
 
 
 # now the new version of modification can also do cool stuff like 

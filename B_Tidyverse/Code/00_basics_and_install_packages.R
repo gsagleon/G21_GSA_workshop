@@ -1,4 +1,4 @@
-# This script file will help install packages we will use in class-----
+# This script will help install packages we will use in class -----
 
 # Install packages -----
 install.packages("devtools") # installs new things not on CRAN
@@ -13,29 +13,26 @@ install.packages("plotly") # great for plots
 # special install of packages using devtools -----
 devtools::install_github("thomasp85/patchwork") # multiple plots
 
-
 # Other packages I really like ------
 install.packages("styler") # style your code - nice
-devtools::install_github("calligross/ggthemeassist") # ggplot GUI
-
-
+devtools::install_github("calligross/ggThemeAssist") # ggplot GUI
 
 # Load Libraries -----
 # these are the commands to load libraries that we will use in class
 # there may colored text saying commads are masked but you can test these if you like
 
 # run these only one time----
-library("ggthemeassist")
-library("styler")
+library(ggThemeAssist)
+library(styler)
 
 # run these each time you run a script -----
-library("readxl") # read in excel files
-library("tidyverse") # dplyr and piping and ggplot etc
-library("lubridate") # dates and times
-library("scales") # scales on ggplot ases
-library("skimr") # quick summary stats
-library("janitor") # clean up excel imports
-library("patchwork") # multipanel graphs
+library(readxl) # read in excel files
+library(tidyverse) # dplyr and piping and ggplot etc
+library(lubridate) # dates and times
+library(scales) # scales on ggplot ases
+library(skimr) # quick summary stats
+library(janitor) # clean up excel imports
+library(patchwork) # multipanel graphs
 library(plotly) # great for interactive plots
 
 # the <- is the assingment operator -----
@@ -45,8 +42,10 @@ x <- 7
 
 x
 
-# this will overwrite.
+# this will overwrite the previous assingment
 x <- "Hello there"
+
+x 
 
 
 #' The other operator that we will use is the pipe or %>%
@@ -58,3 +57,5 @@ x <- "Hello there"
 #' This all could then be stored in the functional human object
 #' 
 #' functional being <- Person %>% wakes up %>% shower %>% caffeine %>% functional being
+
+
