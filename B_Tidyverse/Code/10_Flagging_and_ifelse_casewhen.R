@@ -18,11 +18,13 @@ lakes.df <- read_csv("data/reduced_lake_long_genus_species.csv")
 
 # I personally like to see what I am doing first
 # lets look at only Cladocerans first
-lakes.df %>% 
+plot <- lakes.df %>% 
   filter(group=='Cladoceran') %>%
   ggplot(aes(lake_name, org_l, color=group)) +
   geom_point(
   ) 
+ggplotly(plot)
+
 
 # Points overlap and you might want to spread them out a bit
 lakes.df %>% 
@@ -92,6 +94,8 @@ lakes.df %>%
 lakes.df <- lakes.df %>%
   mutate(flag = case_when(org_l > 40 ~ "high",
                           TRUE ~ "in_range"))
+
+
 
 lakes.df <- lakes.df %>%
   mutate(flag = case_when(org_l > 40 ~ "high",

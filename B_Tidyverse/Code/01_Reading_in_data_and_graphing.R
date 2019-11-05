@@ -32,14 +32,25 @@ library(patchwork) # multipanel graphs
 # Read in file using tidyverse code-----
 south.df <- read_csv("data/south_lake.csv")
 
+<<<<<<< HEAD
 # south.df <- read_csv("data/south_lake_long.csv")
 
 
+=======
+<<<<<<< HEAD
+=======
+
+>>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
+>>>>>>> c91a29a144ed2650f4eab083c2058fa29eb86504
 # there are a few tricks here - 
 # , guess_max = XXX - this will extend the range readr tries to guess the forma of the variable
 # you can also add in a pipe %>% and read in the file and pass that to further prcessing scripts
 
 
+<<<<<<< HEAD
+=======
+
+>>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
 # Review data structure -----
 # Use blue triangle
 
@@ -88,8 +99,13 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 # What colors are available? ----
 # google --> ggplot colors
+<<<<<<< HEAD
 
 
+=======
+
+
+>>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
 # Adding simple axes labels ----
 # in the simple labels you can add \n to make a line break... try it after running this code
 ggplot(south.df, aes(x=date, y=cladoceran)) +
@@ -180,13 +196,6 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
   scale_x_date(date_breaks = "6 month",
                limits = as_date(c('1994-06-01', '2006-12-31')),
                labels=date_format("%Y-%m-%d"), expand=c(0,0)) + 
-  theme(axis.line = element_line(linetype = "dotted"), 
-    axis.ticks = element_line(linetype = "longdash"), 
-    panel.grid.major = element_line(linetype = "blank"), 
-    panel.grid.minor = element_line(linetype = "blank"), 
-    axis.text = element_text(family = "Bookman"), 
-    axis.text.y = element_text(family = "serif"), 
-    panel.background = element_rect(fill = "magenta1")) +
   theme (
     axis.text.x = element_text(size=12, face="bold", angle=45, hjust=1)
      ) 

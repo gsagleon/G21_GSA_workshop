@@ -112,7 +112,11 @@ lakes.df %>%
 
 # Lets combine the rare species
 lakes.df <- lakes.df %>%  
+<<<<<<< HEAD
+  mutate(lumped_sp = fct_lump(genus_species, n=2)) 
+=======
   mutate(lumped_sp = fct_lump(genus_species, n=3)) 
+>>>>>>> c91a29a144ed2650f4eab083c2058fa29eb86504
 
 # reorder it by number per liter look at a plot
 lakes.df %>% 
