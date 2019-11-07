@@ -32,25 +32,13 @@ library(patchwork) # multipanel graphs
 # Read in file using tidyverse code-----
 south.df <- read_csv("data/south_lake.csv")
 
-<<<<<<< HEAD
+
 # south.df <- read_csv("data/south_lake_long.csv")
 
-
-=======
-<<<<<<< HEAD
-=======
-
->>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
->>>>>>> c91a29a144ed2650f4eab083c2058fa29eb86504
 # there are a few tricks here - 
 # , guess_max = XXX - this will extend the range readr tries to guess the forma of the variable
 # you can also add in a pipe %>% and read in the file and pass that to further prcessing scripts
 
-
-<<<<<<< HEAD
-=======
-
->>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
 # Review data structure -----
 # Use blue triangle
 
@@ -99,13 +87,7 @@ ggplot(south.df, aes(x=date, y=cladoceran)) +
 
 # What colors are available? ----
 # google --> ggplot colors
-<<<<<<< HEAD
 
-
-=======
-
-
->>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
 # Adding simple axes labels ----
 # in the simple labels you can add \n to make a line break... try it after running this code
 ggplot(south.df, aes(x=date, y=cladoceran)) +

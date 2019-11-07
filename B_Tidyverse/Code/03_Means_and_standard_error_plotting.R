@@ -85,6 +85,21 @@ ggplot(lakes.df, aes(year, color=group)) +
                      values = c("blue", "red"),
                      labels = c("Cladoceran", "Copepod"))
 
+
+ggplot(lakes.df, aes(x= year, y = org_l, color=group)) + 
+  stat_summary(
+               fun.y = mean, na.rm = TRUE,
+               geom = "point",
+               size = 3) +
+  stat_summary(fun.y = mean,
+             fun.ymin = function(x) mean(x) - sd(x),
+             fun.ymax = function(x) mean(x) + sd(x),
+             geom = "errorbar")
+
+
+
+
+
 # we can offset the points so they dont overlap
 ggplot(lakes.df, aes(year, color=group)) + 
   stat_summary(aes(y = org_l),
