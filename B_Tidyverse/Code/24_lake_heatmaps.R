@@ -5,10 +5,7 @@
 # load packages----
 library(tidyverse)
 library(lubridate)
-<<<<<<< HEAD
-=======
 library(ggplot2)
->>>>>>> 342e763033d69a1005e1be69dfd4fcb0b0ffd545
 library(scales)
 library(colorRamps)
 library(akima)
